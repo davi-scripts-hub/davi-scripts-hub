@@ -1,0 +1,201 @@
+repeat task.wait() until game:IsLoaded()
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+
+local function Char()
+    return player.Character or player.CharacterAdded:Wait()
+end
+
+local Config = {
+    Speed = 0.2,
+    Color = Color3.fromRGB(0,0,0),
+    Transparency = 0.1
+}
+
+local Toggles = {}
+
+local GUI = Instance.new("ScreenGui", game.CoreGui)
+GUI.Name = "DaviScriptsHub"
+
+local Main = Instance.new("Frame", GUI)
+Main.Size = UDim2.new(0,750,0,400)
+Main.Position = UDim2.new(0.5,-375,0.5,-200)
+Main.BackgroundColor3 = Config.Color
+Main.BackgroundTransparency = Config.Transparency
+
+local Title = Instance.new("TextLabel", Main)
+Title.Size = UDim2.new(1,0,0,30)
+Title.Text = "Davi Scripts Hub 🔥"
+Title.BackgroundTransparency = 1
+Title.TextColor3 = Color3.new(1,1,1)
+
+local Min = Instance.new("TextButton", Main)
+Min.Size = UDim2.new(0,100,0,25)
+Min.Position = UDim2.new(1,-210,0,5)
+Min.Text = "Minimizar"
+
+local YT = Instance.new("TextButton", Main)
+YT.Size = UDim2.new(0,100,0,25)
+YT.Position = UDim2.new(1,-105,0,5)
+YT.Text = "YouTube"
+
+YT.MouseButton1Click:Connect(function()
+    setclipboard("https://www.youtube.com/@DaviScripts-d2b")
+end)
+
+local Ball = Instance.new("TextButton", GUI)
+Ball.Size = UDim2.new(0,50,0,50)
+Ball.Position = UDim2.new(0,20,0.5,0)
+Ball.Text = "D"
+Ball.Visible = false
+
+Min.MouseButton1Click:Connect(function()
+    Main.Visible = false
+    Ball.Visible = true
+end)
+
+Ball.MouseButton1Click:Connect(function()
+    Main.Visible = true
+    Ball.Visible = false
+end)
+
+local Menu = Instance.new("Frame", Main)
+Menu.Size = UDim2.new(0,150,1,-30)
+Menu.Position = UDim2.new(0,0,0,30)
+Menu.BackgroundColor3 = Color3.fromRGB(20,20,20)
+
+local Content = Instance.new("Frame", Main)
+Content.Size = UDim2.new(1,-150,1,-30)
+Content.Position = UDim2.new(0,150,0,30)
+Content.BackgroundTransparency = 1
+
+local Tabs = {}
+
+local function CreateTab(name)
+    local btn = Instance.new("TextButton", Menu)
+    btn.Size = UDim2.new(1,0,0,40)
+    btn.Text = name
+    btn.BackgroundColor3 = Color3.fromRGB(30,30,30)
+    btn.TextColor3 = Color3.new(1,1,1)
+
+    local frame = Instance.new("Frame", Content)
+    frame.Size = UDim2.new(1,0,1,0)
+    frame.Visible = false
+    frame.BackgroundTransparency = 1
+
+    btn.MouseButton1Click:Connect(function()
+        for _,v in pairs(Content:GetChildren()) do
+            v.Visible = false
+        end
+        frame.Visible = true
+    end)
+
+    table.insert(Tabs, frame)
+    return frame
+end
+
+local function Btn(parent,text)
+    local b = Instance.new("TextButton",parent)
+    b.Size = UDim2.new(0,180,0,30)
+    b.Position = UDim2.new(0,10,0,#parent:GetChildren()*35)
+    b.Text = text.." : OFF"
+    b.BackgroundColor3 = Color3.fromRGB(40,40,40)
+    b.TextColor3 = Color3.new(1,1,1)
+
+    Toggles[text] = false
+
+    b.MouseButton1Click:Connect(function()
+        Toggles[text] = not Toggles[text]
+        b.Text = text.." : "..(Toggles[text] and "ON" or "OFF")
+    end)
+end
+
+local Home = CreateTab("Home")
+local Farm = CreateTab("Farm")
+local Boss = CreateTab("Boss")
+local Fruit = CreateTab("Frutas")
+local Misc = CreateTab("Misc")
+
+Home.Visible = true
+
+Btn(Home,"Auto Farm Level")
+Btn(Home,"Auto Kaitun")
+Btn(Home,"Auto Chest")
+Btn(Home,"Auto Berry")
+
+Btn(Farm,"Auto Maestria Fruta")
+Btn(Farm,"Auto Maestria Sword")
+Btn(Farm,"Auto Maestria Gun")
+
+Btn(Boss,"Auto Boss")
+Btn(Boss,"Auto Saber")
+Btn(Boss,"Auto Leviathan")
+
+Btn(Fruit,"Auto Fruit")
+Btn(Fruit,"Auto Spin")
+Btn(Fruit,"Auto Store")
+
+Btn(Misc,"Anti AFK")
+Btn(Misc,"Fast Attack")
+Btn(Misc,"Auto Haki")
+
+local function Enemy()
+    local root = Char():WaitForChild("HumanoidRootPart")
+    local closest,dist = nil,math.huge
+
+    for _,v in pairs(workspace.Enemies:GetChildren()) do
+        if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+            local d = (v.HumanoidRootPart.Position-root.Position).Magnitude
+            if d < dist then
+                closest = v
+                dist = d
+            end
+        end
+    end
+
+    return closest
+end
+
+local function MoveTo(pos)
+    local root = Char():WaitForChild("HumanoidRootPart")
+    root.CFrame = root.CFrame:Lerp(CFrame.new(pos), Config.Speed)
+end
+
+local function Attack()
+    local tool = Char():FindFirstChildOfClass("Tool")
+    if tool then tool:Activate() end
+end
+
+RunService.RenderStepped:Connect(function()
+
+    local root = Char():FindFirstChild("HumanoidRootPart")
+    if not root then return end
+
+    if Toggles["Auto Farm Level"] or Toggles["Auto Kaitun"] then
+        local e = Enemy()
+        if e then
+            MoveTo(e.HumanoidRootPart.Position + Vector3.new(0,3,3))
+            Attack()
+        end
+    end
+
+    if Toggles["Auto Chest"] then
+        for _,v in pairs(workspace:GetChildren()) do
+            if string.find(v.Name,"Chest") then
+                MoveTo(v.Position)
+            end
+        end
+    end
+
+    if Toggles["Auto Berry"] then
+        for _,v in pairs(workspace:GetChildren()) do
+            if string.find(v.Name,"Berry") then
+                MoveTo(v.Position)
+            end
+        end
+    end
+
+end)
