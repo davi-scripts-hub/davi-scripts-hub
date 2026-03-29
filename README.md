@@ -4,17 +4,17 @@ CUSTOM_UI_MODE_DATA = {
     Theme = "Darkblue",
     Logo = "rbxassetid://96012102609548",
     Background = "rbxassetid://106122382642646",
-    YouTube = "DaviScripts",
+    YouTube = "Davi Scripts",
     Discord = "rCZ7uBsNFS",
     WelcomeMessage = {
-        "Davi Scripts hub",
+        "Davi hub",
         "BY Davi Scripts"
     },
     TrailIcon = "💙",
     ToggleIcon = "rbxassetid://96012102609548",
-    CommunityIcon = "rbxassetid://74795247699120",
+    CommunityIcon = "rbxassetid://129698128709234",
     Contributers = {
-        "Davi Scripts | hashishx"
+        "Davi Scripts | Davi Scripts"
     },
     IntroText = "Acredite em si mesmo e você será imparável",
     GetKeyLink = "https://hehehub-acsu123.pythonanywhere.com/api/getkey?hwid=rubuhub",
