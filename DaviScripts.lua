@@ -7,16 +7,16 @@ CUSTOM_UI_MODE_DATA = {
     YouTube = "Davi Scripts",
     Discord = "rCZ7uBsNFS",
     WelcomeMessage = {
-        "Davi hub",
+        "Davi Scripts HUB",
         "BY Davi Scripts"
     },
     TrailIcon = "💙",
     ToggleIcon = "rbxassetid://96012102609548",
     CommunityIcon = "rbxassetid://129698128709234",
     Contributers = {
-        "Davi Scripts | Davi Scripts"
+        "Davi Scripts | hashishx"
     },
-    IntroText = "Acredite em si mesmo e você será imparável",
+    IntroText = "Acredite em si mesmo e você será imparável.",
     GetKeyLink = "https://hehehub-acsu123.pythonanywhere.com/api/getkey?hwid=rubuhub",
     TutorialLink = "https://hehehub-acsu123.pythonanywhere.com/api/getkey?hwid=TUTORIAL",
 }
