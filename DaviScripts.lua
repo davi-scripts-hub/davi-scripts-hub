@@ -3,7 +3,7 @@ CUSTOM_UI_MODE_DATA = {
     Name = "Davi",
     Theme = "Darkblue",
     Logo = "rbxassetid://96012102609548",
-    Background = "rbxassetid://106122382642646",
+    Background = "rbxassetid://98096100327291",
     YouTube = "Davi Scripts",
     Discord = "rCZ7uBsNFS",
     WelcomeMessage = {
@@ -11,7 +11,7 @@ CUSTOM_UI_MODE_DATA = {
         "BY Davi Scripts"
     },
     TrailIcon = "💙",
-    ToggleIcon = "rbxassetid://96012102609548",
+    ToggleIcon = "rbxassetid://88870369034630",
     CommunityIcon = "rbxassetid://129698128709234",
     Contributers = {
         "Davi Scripts | hashishx"
