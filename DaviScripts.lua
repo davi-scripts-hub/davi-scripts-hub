@@ -17,10 +17,10 @@ CUSTOM_UI_MODE_DATA = {
         "Davi Scripts | hashishx"
     },
     IntroText = "Acredite em si mesmo e você será imparável.",
-    GetKeyLink = "https://hehehub-acsu123.pythonanywhere.com/api/getkey?hwid=rubuhub",
+    GetKeyLink = "https://direct-link.net/5038977/TB6E9fp0O6qx",
     TutorialLink = "https://hehehub-acsu123.pythonanywhere.com/api/getkey?hwid=TUTORIAL",
 }
 
-_G.MY_KEY_IS = "free"
+_G.MY_KEY_IS = "DaviScriptshub_4c838c52-49b8-e5f3-69dd-542aacb21f85"
 
 loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/1c3b3c8a311a71c8e81c44b998a81e39.lua"))()
