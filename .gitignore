@@ -1,40 +1,30 @@
+IS_CUSTOM_UI_MODE = true
+CUSTOM_UI_MODE_DATA = {
+    Name = "Davi",
+    Theme = "darkblue",
+    Logo = "rbxassetid://96012102609548",
+    Background = "rbxassetid://98096100327291",
+    YouTube = "DaviScripts",
+    Discord = "vh8hKNTc4",
+    WelcomeMessage = {
+        "Davi Scripts HUB",
+        "BY Davi Scripts"
+    },
+    TrailIcon = "💙",
+    ToggleIcon = "rbxassetid://88870369034630",
+    CommunityIcon = "rbxassetid://129698128709234",
+    Contributers = {
+        "Davi Scripts | hashishx"
+    },
+    IntroText = "Acredite em si mesmo e você será imparável.",
 
-local player = game.Players.LocalPlayer
-local char = player.Character or player.CharacterAdded:Wait()
-
--- CONFIG
-local ImageID = "rbxassetid://SEU_ID_AQUI"
-
-local Toggles = {
-    Farm = false,
-    Chest = false
+    GetKeyLink = "https://direct-link.net/5038977/MyrmI39cr5La",
+    TutorialLink = "https://direct-link.net/5038977/MyrmI39cr5La"
 }
 
-local FarmMode = "Melee"
+_G.MY_KEY_IS = "https://direct-link.net/5038977/MyrmI39cr5La"
 
--- GUI
-local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-
--- BOTÃO REDONDO
-local OpenButton = Instance.new("ImageButton")
-OpenButton.Parent = ScreenGui
-OpenButton.Size = UDim2.new(0,60,0,60)
-OpenButton.Position = UDim2.new(0,100,0,100)
-OpenButton.Image = ImageID
-OpenButton.BackgroundTransparency = 1
-OpenButton.Active = true
-OpenButton.Draggable = true
-
--- FRAME
-local Frame = Instance.new("Frame", ScreenGui)
-Frame.Size = UDim2.new(0,320,0,400)
-Frame.Position = UDim2.new(0.3,0,0.2,0)
-Frame.BackgroundColor3 = Color3.fromRGB(15,15,15)
-Frame.Visible = false
-Frame.Active = true
-Frame.Draggable = true
-
-Instance.new("UIListLayout", Frame)
+loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/1c3b3c8a311a71c8e81c44b998a81e39.lua"))()Instance.new("UIListLayout", Frame)
 
 OpenButton.MouseButton1Click:Connect(function()
     Frame.Visible = not Frame.Visible
